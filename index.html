@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            // screens: {
+            //   xxs: '350px', // Custom size for extra small screens
+            //   xs: '450px', // Custom size for small screens
+            //   sm: '600px', // Custom size for small screens
+            //   md: '768px',
+            //   lg: '1024px'
+            // },
+            colors: {
+              // red: '#da373d',  // Custom color
+              redHSL: 'hsl(14, 86%, 42%)', // Custom HSL color example
+              greenHSL: 'hsl(159, 69%, 38%)' // Another HSL color example
+            }
+          }
+        }
+      }
+    </script>
+
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
