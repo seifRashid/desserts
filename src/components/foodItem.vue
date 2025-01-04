@@ -55,9 +55,9 @@ watch(singleItemCount, (newValue) => {
 </script>
 
 <template>
-  <div class="flex flex-col mt-2 w-1/3 lg:w-1/4 mx-2">
+  <div class="flex flex-col mt-2 lg:w-1/4 mx-2">
     <!-- Image div with the absolute buttons -->
-    <div class="relative w-[240px] h-[240px] bg-gray-200 cursor-pointer">
+    <div class="relative w-[300px] h-[300px] sm:w-[240px] sm:h-[240px] bg-gray-200 cursor-pointer">
       <img
         class="w-full h-full object-cover rounded-md hover:border-2 border-redHSL"
         :src="image"

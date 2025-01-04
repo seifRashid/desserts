@@ -11,9 +11,9 @@ const DessertsStore = useDessertsStore();
 const Desserts = DessertsStore.Desserts;
 </script>
 <template>
-  <div class="md:w-full">
+  <div class="w-full md:w-full">
     <p class="text-2xl text-black font-bold py-4 mb-2 md:ml-12 lg:ml-6">Desserts</p>
-    <div class="md:flex md:flex-wrap lg:flex-wrap lg:justify-even lg:gap-8 lg:mr-12 md:justify-around">
+    <div class="flex flex-col items-center justify-start sm:flex sm:flex-row sm:flex-wrap lg:flex-wrap lg:justify-even lg:gap-8 lg:mr-12 md:justify-around">
       <!-- Loop through the desserts array and pass props to the FoodItem component -->
       <FoodItem
         v-for="(item, index) in Desserts"

@@ -15,11 +15,11 @@ const DessertsStore = useDessertsStore();
 
 <template>
   <div class="bg-greenHSL/5">
-    <div id="blurContainer" :class="{ 'blur-sm': DessertsStore.OrderConfirmedModal }" class="sm:flex sm:justify-between sm:-ml-9 lg:mx-12">
-      <section class="ml-32 md:w-full md:ml-16 md:w-2/3 lg:ml-12 lg:w-3/4">
+    <div id="blurContainer" :class="{ 'blur-sm': DessertsStore.OrderConfirmedModal }" class="sm:flex sm:flex-row lg:mx-12 m-2">
+      <section class="flex items-center w-full justify-center md:w-full md:ml-16 md:w-2/3 lg:ml-12 lg:w-3/4">
           <DessertsItems />
       </section>
-      <aside class="m-10 md:w-1/3 lg:w-1/4 lg:ml-0">
+      <aside class="mt-10 w-full md:w-1/3 lg:w-1/4 lg:ml-0">
           <CartView />
       </aside>
     </div>
