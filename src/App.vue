@@ -7,7 +7,8 @@ import ButtonComponent from './components/ButtonComponent.vue'
   <header>
     <nav class="w-full px-4 py-2 flex items-center justify-between">
       <!-- <img alt="Vue logo" class="mx-5" src="@/assets/logo.svg" width="60" height="60" /> -->
-      <svg
+      <div class="flex gap-2 items-center">
+        <svg
         height="48px"
         width="48px"
         version="1.1"
@@ -65,6 +66,8 @@ import ButtonComponent from './components/ButtonComponent.vue'
           ></path>
         </g>
       </svg>
+      <h1 class="hidden sm:block text-xl font-extrabold text-orange-950 " >DeliciousPacks</h1>
+      </div>
 
       <div class="text-slate-700 font-semibold gap-8 flex">
         <RouterLink to="/">Home</RouterLink>
