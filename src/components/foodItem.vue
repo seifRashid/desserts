@@ -95,5 +95,6 @@ watch(singleItemCount, (newValue) => {
       <p class="font-bold">{{ category }}</p>
       <p class="text-redHSL font-semibold">$ {{ price }}</p>
     </div>
+    {{ image }}
   </div>
 </template>
