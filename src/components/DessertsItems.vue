@@ -22,7 +22,7 @@ const Desserts = DessertsStore.Desserts;
         :name="item.name"
         :price="item.price"
         :category="item.category"
-        :image="item.image.desktop"
+        :image="item.image.tablet"
       />
     </div>
   </div>
