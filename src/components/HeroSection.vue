@@ -24,7 +24,7 @@
         </p>
         <!-- Search section -->
         <div
-          class="flex gap-2 bg-orange-500/50 border border-orange-500 py-2 px-3 rounded-full w-[400px] mt-4 ring-4 ring-orange-600"
+          class="flex gap-2 bg-orange-500/50 border border-orange-500 py-2 px-3 rounded-full w-[400px] mt-4 ring-4 ring-orange-600 hover:ring-orange-700"
         >
           <button>
             <!-- fontawesome search icon -->
@@ -38,15 +38,13 @@
         </div>
         <!-- Call to action button -->
         <div
-          class="flex gap-2 items-center py-2 px-4 text-white text-md font-semibold rounded-full bg-orange-500 hover:bg-orange-600 mt-8"
+          class="py-2 px-4 text-white text-md font-semibold rounded-full bg-orange-500 hover:bg-orange-600 mt-8"
         >
-          <RouterLink to="/desserts">Explore Menu</RouterLink>
-          <!-- <ButtonComponent name="Order Now" link="" /> -->
-          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="#000000" class="size-8">
+          <RouterLink to="/desserts" class="flex gap-2 items-center" title="Click to explore menu" >Explore Menu <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="#000000" class="size-8 hover:animate-bounce">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
             <g id="SVGRepo_iconCarrier">
-              <title>food</title>
+              <title>Click to explore menu</title>
               <g id="food">
                 <circle
                   cx="57.5"
@@ -222,7 +220,8 @@
                 ></line>
               </g>
             </g>
-          </svg>
+          </svg></RouterLink>
+          <!-- <ButtonComponent name="Order Now" link="" /> -->
         </div>
       </div>
     </div>
