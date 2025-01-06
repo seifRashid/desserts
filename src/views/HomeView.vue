@@ -1,4 +1,5 @@
 <script setup>
+import Carousel from '@/components/Carousel.vue';
 import HeroSection from '@/components/HeroSection.vue'
 
 // import ButtonComponent from '@/components/ButtonComponent.vue'
@@ -327,5 +328,8 @@ import HeroSection from '@/components/HeroSection.vue'
         </div>
       </div>
     </div>
+    <Carousel/>
+    <Carousel/>
+    <Carousel/>
   </main>
 </template>

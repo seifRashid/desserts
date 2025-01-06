@@ -32,36 +32,33 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
-const scrollPosition = ref(0);
-const carouselContainer = ref(null);
+const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5']
+const scrollPosition = ref(0)
+const carouselContainer = ref(null)
 
 const scrollHandler = () => {
   if (carouselContainer.value) {
-    scrollPosition.value = window.scrollY % carouselContainer.value.scrollWidth;
+    scrollPosition.value = window.scrollY % carouselContainer.value.scrollWidth
   }
-};
+}
 
 onMounted(() => {
-  window.addEventListener("scroll", scrollHandler);
-});
+  window.addEventListener('scroll', scrollHandler)
+})
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", scrollHandler);
-});
+  window.removeEventListener('scroll', scrollHandler)
+})
 
 const scrollLeft = () => {
-  scrollPosition.value = Math.max(scrollPosition.value - 300, 0);
-};
+  scrollPosition.value = Math.max(scrollPosition.value - 300, 0)
+}
 
 const scrollRight = () => {
-  scrollPosition.value = Math.min(
-    scrollPosition.value + 300,
-    carouselContainer.value.scrollWidth
-  );
-};
+  scrollPosition.value = Math.min(scrollPosition.value + 300, carouselContainer.value.scrollWidth)
+}
 </script>
 
 <style scoped>
