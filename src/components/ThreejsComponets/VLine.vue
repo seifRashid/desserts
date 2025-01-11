@@ -1,14 +1,18 @@
 <script setup>
 import * as THREE from 'three'
+import { ref } from 'vue'
+const canvas = ref(null)
 
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 500)
-camera.position.set( 0, 0, 100 )
+camera.position.set(0, 0, 100)
 camera.lookAt(0, 0, 0)
 
 const renderer = new THREE.WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight)
-document.body.appendChild(renderer.domElement)
+renderer.setPixelRatio(window.devicePixelRatio)
+
+canvas.value.appendChild(renderer.domElement)
 
 const material = new THREE.LineBasicMaterial({ color: 0x0000ff })
 const points = []
@@ -22,3 +26,15 @@ scene.add(line)
 
 renderer.render(scene, camera)
 </script>
+
+<template>
+  <div>
+    <canvas ref="canvas"></canvas>
+  </div>
+</template>
+
+<style scoped>
+/* canvas {
+  display: block;
+} */
+</style>
