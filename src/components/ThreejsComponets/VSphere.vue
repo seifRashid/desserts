@@ -12,15 +12,16 @@ const canvas = ref(null)
 
 onMounted(() => {
   const scene = new THREE.Scene()
-  // const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
   // orthographic camera
-  const camera = new THREE.OrthographicCamera(-10, 10, 10, -10, 0.1, 1000)
+  // const camera = new THREE.OrthographicCamera(-10, 10, 10,
+  // -10, 0.1, 1000)
   camera.position.z = 5
 
-  const renderer = new THREE.WebGLRenderer({ canvas: canvas.value })
+  const renderer = new THREE.WebGLRenderer({ canvas: canvas.value, antialias: true })
   // instantiate controls with the canvas ref
   const controls = new OrbitControls(camera, canvas.value)
-  // renderer.setSize(window.innerWidth, window.innerHeight)
+  renderer.setSize(window.innerWidth, window.innerHeight)
 
   // const geometry = new THREE.SphereGeometry(1, 32, 32)
   const geometry = new THREE.BoxGeometry(2, 2, 2)
@@ -28,17 +29,29 @@ onMounted(() => {
   const sphere = new THREE.Mesh(geometry, material)
   scene.add(sphere)
 
-  function animate() {
-    camera.setSize(window.innerWidth / window.innerHeight)
+  window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight)
-    sphere.rotation.x += 0.01
-    sphere.rotation.y += 0.01
+    camera.updateProjectionMatrix()
+    camera.aspect = window.innerWidth / window.innerHeight
+    console.log(window.devicePixelRatio)
+  })
+
+  function animate() {
+    // sphere.rotation.x += 0.01
+    // sphere.rotation.y += 0.01
     controls.update()
     renderer.render(scene, camera)
     requestAnimationFrame(animate)
   }
   animate()
 })
+// onMounted(
+//   () => {
+//     window.addEventListener('resize', () => {
+//       console.log('resize')
+//       })
+//       }
+// )
 </script>
 
 <style>
