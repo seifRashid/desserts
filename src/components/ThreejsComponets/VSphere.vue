@@ -25,16 +25,25 @@ onMounted(() => {
   const controls = new OrbitControls(camera, canvas.value)
   renderer.setSize(window.innerWidth, window.innerHeight)
 
-  // const geometry = new THREE.SphereGeometry(1, 32, 32)
-  // const geometry = new THREE.BoxGeometry(2, 2, 2)
-  // const material = new THREE.MeshBasicMaterial({ color: 'green', wireframe: true })
+// Initialize the texture loader
+const textureLoader = new THREE.TextureLoader()
+// Load the texture
+const grassTexture = textureLoader.load('/desserts/public/assets/textures/space-cruiser-panels2-bl/space-cruiser-panels2_albedo.png')
+grassTexture.repeat.set(5,5)
+grassTexture.wrapS = THREE.RepeatWrapping
+grassTexture.wrapT = THREE.RepeatWrapping
+
   const geometry = new THREE.BoxGeometry( 1, 1, 1 ); 
   const torusKnotGeometry = new THREE.TorusKnotGeometry(0.5, 0.15, 100, 16)
+  const cylinder = new THREE.CylinderGeometry(0.5,0.1,1,30)
   
-const material = new THREE.MeshStandardMaterial();
-material.metalness=0.7
-material.roughness=0.1
-material.color = new THREE.Color('red');
+const material = new THREE.MeshPhysicalMaterial
+material.map = grassTexture
+material.metalness=0.1
+material.roughness=0.5
+material.reflectivity=0.5
+material.clearcoat=0.9
+// material.color = new THREE.Color('red');
 // pane.addInput(material, 'shininess', {
 //   min: 0,
 //   max: 100,
@@ -42,8 +51,10 @@ material.color = new THREE.Color('red');
 // })
 // const cube = new THREE.Mesh( geometry, material );
   const sphere = new THREE.Mesh(geometry, material)
-  const sphere2 = new THREE.Mesh(torusKnotGeometry, material)
-  sphere2.position.x = 2
+  const cylinderShape = new THREE.Mesh(cylinder, material)
+  const torusKnot = new THREE.Mesh(torusKnotGeometry, material)
+  torusKnot.position.x = 2
+  cylinderShape.position.x = -2
   // const sphere3 = new THREE.Mesh(geometry, material)
   // sphere3.position.x = -4
 
@@ -65,8 +76,10 @@ material.color = new THREE.Color('red');
   pointLight.position.set(2,5,1)
   scene.add(pointLight)
   // sphere.rotation.z = THREE.MathUtils.degToRad(45)
+  // Add meshes/shapes to the scene
   scene.add(sphere)
-  scene.add(sphere2)
+  scene.add(torusKnot)
+  scene.add(cylinderShape)
 
   const axeHelper = new THREE.AxesHelper(2)
   scene.add(axeHelper)
@@ -79,8 +92,11 @@ material.color = new THREE.Color('red');
   })
 
   function animate() {
-    // sphere.rotation.x += 0.01
-    // sphere.rotation.y += 0.01
+    // scene.children.forEach((child)=>{
+    //   if(child instanceof THREE.Mesh){
+    //     child.rotation.x += 0.01
+    //   }
+    // })
     controls.update()
     renderer.render(scene, camera)
     requestAnimationFrame(animate)

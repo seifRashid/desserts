@@ -15,9 +15,18 @@
       <div
         class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white"
       >
-        <h1 class="text-4xl md:text-6xl font-bold drop-shadow-md">
+      <!-- <div class="flex flex-col justify-center items-center h-[200px]">
+    <h1 class="typewriter text-3xl md:text-6xl font-bold drop-shadow-md">
+      Craving Something Delicious? 
+    </h1>
+    <h1 class="typewriter text-3xl md:text-6xl font-bold drop-shadow-md">
+      We've Got You Covered!
+    </h1> -->
+    <h1 class="text-4xl md:text-6xl font-bold drop-shadow-md">
           Craving Something Delicious? We've Got You Covered!
         </h1>
+  <!-- </div> -->
+
         <p class="mt-4 text-lg md:text-2xl mx-2 sm:mx-auto">
           Order your favorite meals from the best restaurants near you and get them delivered fresh
           and fast!
@@ -226,3 +235,29 @@
       </div>
     </div>
 </template>
+<style scoped>
+.typewriter {
+  overflow: hidden;            /* Hide overflowing text */
+  border-right: 3px solid #333; /* Cursor effect */
+  white-space: nowrap;        /* Prevent text wrap */
+  animation: typing 4s steps(50) 1s forwards, blink 0.7s infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #333;
+  }
+}
+</style>
