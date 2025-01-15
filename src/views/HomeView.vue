@@ -12,7 +12,7 @@ import { onMounted } from 'vue'
 
 onMounted(() => {
   gsap.to('.testGsap', { x: 400, stagger: 1, duration: 3, ease: 'power2.inOut' })
-  // gsap.to('.testGsap2', { x: 100, stagger: 1, duration: 3, ease: 'power2.inOut' })
+  gsap.to('.testGsap3', { x: 1200, duration: 3, scale:2, repeat:-1, yoyo:true })
 })
 </script>
 
@@ -340,7 +340,7 @@ onMounted(() => {
     </div>
     <!-- Gsap test animations -->
     <h1 class="testGsap text-xl font-bold my-4">Hello there</h1>
-    <h1 class="testGsap text-xl font-bold my-4">How are you doing brother</h1>
+    <h1 class="testGsap3 text-xl font-bold my-4">How are you doing brother</h1>
     <h1 class="testGsap text-xl font-bold my-4">Lets animate this😁</h1>
     <!-- <button @click="animateBox">Animate</button> -->
 
