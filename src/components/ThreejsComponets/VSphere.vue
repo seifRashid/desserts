@@ -28,21 +28,30 @@ onMounted(() => {
 // Initialize the texture loader
 const textureLoader = new THREE.TextureLoader()
 // Load the texture
-const grassTexture = textureLoader.load('/desserts/public/assets/textures/space-cruiser-panels2-bl/space-cruiser-panels2_albedo.png')
-grassTexture.repeat.set(5,5)
-grassTexture.wrapS = THREE.RepeatWrapping
-grassTexture.wrapT = THREE.RepeatWrapping
+const grassAlbedo = textureLoader.load('/desserts/public/assets/textures/whispy-grass-meadow-bl/wispy-grass-meadow_albedo.png')
+const grassAo = textureLoader.load('/desserts/public/assets/textures/whispy-grass-meadow-bl/wispy-grass-meadow_ao.png')
+const grassHeight = textureLoader.load('/desserts/public/assets/textures/whispy-grass-meadow-bl/wispy-grass-meadow_height.png')
+const grassMetalic = textureLoader.load('/desserts/public/assets/textures/whispy-grass-meadow-bl/wispy-grass-meadow_metalic.png')
+const grassNormal = textureLoader.load('/desserts/public/assets/textures/whispy-grass-meadow-bl/wispy-grass-meadow_normal.png')
+// const grassPreview = textureLoader.load('/desserts/public/assets/textures/whispy-grass-meadow-bl/wispy-grass-meadow_preview.png')
+const grassRoughness = textureLoader.load('/desserts/public/assets/textures/whispy-grass-meadow-bl/wispy-grass-meadow_roughness.png')
+grassAlbedo.repeat.set(1,1)
+grassAlbedo.wrapS = THREE.RepeatWrapping
+grassAlbedo.wrapT = THREE.RepeatWrapping
 
   const geometry = new THREE.BoxGeometry( 1, 1, 1 ); 
   const torusKnotGeometry = new THREE.TorusKnotGeometry(0.5, 0.15, 100, 16)
-  const cylinder = new THREE.CylinderGeometry(0.5,0.1,1,30)
+  const cylinder = new THREE.CylinderGeometry(0.5,0.5,1,30)
   
-const material = new THREE.MeshPhysicalMaterial
-material.map = grassTexture
-material.metalness=0.1
-material.roughness=0.5
-material.reflectivity=0.5
-material.clearcoat=0.9
+const material = new THREE.MeshStandardMaterial
+material.map = grassAlbedo
+material.metalness=1
+material.metalnessMap = grassMetalic
+material.roughness=1
+material.roughnessMap = grassRoughness
+material.normalMap = grassNormal
+// material.reflectivity=0.5
+// material.clearcoat=0.9
 // material.color = new THREE.Color('red');
 // pane.addInput(material, 'shininess', {
 //   min: 0,
@@ -73,7 +82,7 @@ material.clearcoat=0.9
   scene.add(light)
   // Point light
   const pointLight = new THREE.PointLight(0xffffff,100)
-  pointLight.position.set(2,5,1)
+  pointLight.position.set(2,3,1)
   scene.add(pointLight)
   // sphere.rotation.z = THREE.MathUtils.degToRad(45)
   // Add meshes/shapes to the scene

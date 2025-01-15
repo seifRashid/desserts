@@ -1,10 +1,19 @@
 <script setup>
-import Carousel from '@/components/Carousel.vue';
 import HeroSection from '@/components/HeroSection.vue'
+import VGsaptest from '@/components/VGsaptest.vue'
 
 // import ButtonComponent from '@/components/ButtonComponent.vue'
 
 // import TheWelcome from '../components/TheWelcome.vue'
+
+//create gsap animation
+import { gsap } from 'gsap'
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  gsap.to('.testGsap', { x: 400, stagger: 1, duration: 3, ease: 'power2.inOut' })
+  // gsap.to('.testGsap2', { x: 100, stagger: 1, duration: 3, ease: 'power2.inOut' })
+})
 </script>
 
 <template>
@@ -13,12 +22,14 @@ import HeroSection from '@/components/HeroSection.vue'
     <HeroSection />
     <!-- Why choose us section -->
     <div class="flex flex-col items-center justify-center my-8">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center text-gray-900 underline decoration-wavy">
+      <h2
+        class="text-2xl sm:text-3xl font-bold text-center text-gray-900 underline decoration-wavy"
+      >
         Why
         <span class="text-orange-600">Choose Us</span>
       </h2>
       <div class="flex flex-col w-full items-center justify-center">
-        <div class="flex w-full sm:w-8/12 mx-4 justify-center items-center mt-2">
+        <div class="testGsap2 flex w-full sm:w-8/12 mx-4 justify-center items-center mt-2">
           <div class="">
             <svg
               viewBox="-102.4 -102.4 1228.80 1228.80"
@@ -92,7 +103,7 @@ import HeroSection from '@/components/HeroSection.vue'
             </p>
           </div>
         </div>
-        <div class="flex w-full sm:w-8/12 mx-4 justify-center items-center mt-2">
+        <div class="testGsap2 flex w-full sm:w-8/12 mx-4 justify-center items-center mt-2">
           <div class="size-16">
             <svg
               viewBox="0 0 1024 1024"
@@ -166,12 +177,11 @@ import HeroSection from '@/components/HeroSection.vue'
           <div class="w-full sm:ml-4 flex flex-row items-end">
             <p class="text-orange-950 font-bold text-lg sm:text-2xl ml-2">Wide Variety:</p>
             <p class="italic text-black text-md sm:text-xl font-semibold">
-              “From pizzas to vegan bowls, find 
-              everything here.”
+              “From pizzas to vegan bowls, find everything here.”
             </p>
           </div>
         </div>
-        <div class="flex w-full sm:w-8/12 sm:mx-4 justify-center items-center mt-2">
+        <div class="testGsap2 flex w-full sm:w-8/12 sm:mx-4 justify-center items-center mt-2">
           <div class="">
             <svg
               version="1.1"
@@ -240,7 +250,7 @@ import HeroSection from '@/components/HeroSection.vue'
             </p>
           </div>
         </div>
-        <div class="flex w-full sm:w-8/12 mx-4 justify-center items-center mt-2">
+        <div class="testGsap2 flex w-full sm:w-8/12 mx-4 justify-center items-center mt-2">
           <div class="">
             <svg
               viewBox="-12.8 -12.8 153.60 153.60"
@@ -328,8 +338,12 @@ import HeroSection from '@/components/HeroSection.vue'
         </div>
       </div>
     </div>
-    <Carousel/>
-    <Carousel/>
-    <Carousel/>
+    <!-- Gsap test animations -->
+    <h1 class="testGsap text-xl font-bold my-4">Hello there</h1>
+    <h1 class="testGsap text-xl font-bold my-4">How are you doing brother</h1>
+    <h1 class="testGsap text-xl font-bold my-4">Lets animate this😁</h1>
+    <!-- <button @click="animateBox">Animate</button> -->
+
+    <VGsaptest />
   </main>
 </template>

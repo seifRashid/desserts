@@ -1,6 +1,8 @@
 <script setup>
 // import VCube from '@/components/ThreejsComponets/VCube.vue';
-import VSphere from '@/components/ThreejsComponets/VSphere.vue';
+// import VHouse from '@/components/ThreejsComponets/VHouse.vue';
+import SolarSystem from '@/components/ThreejsComponets/SolarSystem.vue';
+// import VSphere from '@/components/ThreejsComponets/VSphere.vue';
 // import VLine from '@/components/ThreejsComponets/VLine.vue';
 // import VThreejsTest from '@/components/ThreejsComponets/VThreejsTest.vue';
 
@@ -11,7 +13,9 @@ import VSphere from '@/components/ThreejsComponets/VSphere.vue';
     <p>Welcome to our food store! Here are some cool visualizations:</p>
     <div class="three-elements">
       <!-- <VCube /> -->
-      <VSphere />
+      <!-- <VSphere /> -->
+      <SolarSystem/>
+       <!-- <VHouse/> -->
        <!-- <VThreejsTest/> -->
         <!-- <VLine/> -->
     </div>
