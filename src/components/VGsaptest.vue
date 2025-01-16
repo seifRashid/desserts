@@ -1,5 +1,5 @@
 <template>
-  <div class="box" ref="boxRef">Animate Me!</div>
+  <div class="box text-xl font-bold" ref="boxRef">Animate Me!</div>
   <button @click="animateBox">Animate</button>
 </template>
 

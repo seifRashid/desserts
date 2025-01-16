@@ -1,6 +1,8 @@
 <script setup>
 import HeroSection from '@/components/HeroSection.vue'
 import VGsaptest from '@/components/VGsaptest.vue'
+import VGsapText from '@/components/VGsapText.vue';
+
 
 // import ButtonComponent from '@/components/ButtonComponent.vue'
 
@@ -8,16 +10,33 @@ import VGsaptest from '@/components/VGsaptest.vue'
 
 //create gsap animation
 import { gsap } from 'gsap'
-import { onMounted } from 'vue'
+import TextPlugin from 'gsap/TextPlugin';
+// import { onMounted } from 'vue'
 
-onMounted(() => {
-  gsap.to('.testGsap', { x: 400, stagger: 1, duration: 3, ease: 'power2.inOut' })
-  gsap.to('.testGsap3', { x: 1200, duration: 3, scale:2, repeat:-1, yoyo:true })
-})
+function refreshAnimation(){
+  gsap.to('.testGsap', {x:0,stagger:{each:0.2, from: 'edges'}, duration:3, ease:'bounce.in'})
+  // gsap.to('.testGsap3', { x: 1200, duration: 3, scale: 2, repeat: -1, yoyo: true })
+}
+function animateBox(){
+  gsap.registerPlugin(TextPlugin)
+  // gsap.to('.testGsap3', { x: 1200, duration: 3, scale: 2, repeat: -1, yoyo: true })
+  gsap.timeline()
+  .to('.testGsap', {x:400,stagger:{each:0.2, from: 'edges'}, duration:3, ease:'bounce.in'})
+  //replaces yourElement's text with "This is the new text" 
+  .to('.myElement',
+  {
+    duration: 2,
+    text: "I love Gsap animation😁🚀",
+    ease: "none",
+    yoyo:true
+  },'<-1');
+}
+
+
 </script>
 
 <template>
-  <main>
+  <main class="w-full overflow-hidden">
     <!-- Landing page -->
     <HeroSection />
     <!-- Why choose us section -->
@@ -339,11 +358,24 @@ onMounted(() => {
       </div>
     </div>
     <!-- Gsap test animations -->
-    <h1 class="testGsap text-xl font-bold my-4">Hello there</h1>
-    <h1 class="testGsap3 text-xl font-bold my-4">How are you doing brother</h1>
+     <!-- <div class="testGsap">
+       <p>Hello there</p>
+     </div> -->
+    <!-- <h1 class="testGsap3 text-xl font-bold my-4 mx-0">How are you doing brother</h1> -->
+    <h1 class="myElement text-xl font-bold my-4">Lets animate this😁</h1>
     <h1 class="testGsap text-xl font-bold my-4">Lets animate this😁</h1>
-    <!-- <button @click="animateBox">Animate</button> -->
-
+    <h1 class="testGsap text-xl font-bold my-4">Lets animate this😁</h1>
+    <h1 class="testGsap text-xl font-bold my-4">Lets animate this😁</h1>
+    <button class="font-semibold bg-green-400 hover:bg-green-300 rounded-md shadow-sm hover:shadow-md py-1 px-2 m-1" @click="animateBox">Animate</button>
+    <button class="font-semibold bg-green-400 hover:bg-green-300 rounded-md shadow-sm hover:shadow-md py-1 px-2 m-1" @click="refreshAnimation">Refresh Animate</button>
+     <VGsapText/>
     <VGsaptest />
   </main>
 </template>
+
+<style scoped>
+.testing {
+  font-weight: bold;
+  margin-left: 400px;
+}
+</style>
