@@ -73,6 +73,7 @@ import ButtonComponent from './components/ButtonComponent.vue'
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/desserts">Desserts</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/gsap-landing-page">Gsap Landing page</RouterLink>
       </div>
       <div class="">
         <ButtonComponent name="Sign Up" />

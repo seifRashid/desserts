@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DessertsView from '@/views/DessertsView.vue'
+import GSapLandingPage from '@/views/GSapLandingPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,11 @@ const router = createRouter({
       path: '/desserts',
       name: 'desserts',
       component: DessertsView
+    },
+    {
+      path: '/gsap-landing-page',
+      name: 'gsap-landing-page',
+      component: GSapLandingPage
     },
     {
       path: '/about',
