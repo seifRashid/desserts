@@ -12,12 +12,14 @@ gsap.registerPlugin(TextPlugin)
   //replaces yourElement's text with "This is the new text" 
   .from('.craving',
   {
-    duration: 5,
+    opacity:0,
+    duration: 4,
     text: "",
   },1)
-  .from(".orderText", {xPercent:200,opacity:0, duration:3, ease:'bounce.out'},'<')
-  .from('.searchSection', {opacity:0, duration:2},'<')
+  .from(".orderText", {xPercent:200,opacity:0, duration:3, ease:'bounce.out'},'-=1')
+  .from('.searchSection', {opacity:0,scale:0,duration:1,ease:'bounce.out'},'<')
   .from(".exploreButton", {opacity:0, y:100, ease:'bounce.out', duration:1},"<")
+  .from('.buttonIcon', {scale:0, duration:1, ease:'back'}, '-=2')
  })
   
 </script>
@@ -71,7 +73,7 @@ gsap.registerPlugin(TextPlugin)
         <div
           class="exploreButton py-2 px-4 text-white text-md font-semibold rounded-full bg-orange-500 hover:bg-orange-600 mt-8"
         >
-          <RouterLink to="/desserts" class="flex gap-2 items-center" title="Click to explore menu" >Explore Menu <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="#000000" class="size-8 hover:animate-bounce">
+          <RouterLink to="/desserts" class="flex gap-2 items-center" title="Click to explore menu" >Explore Menu <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="#000000" class="buttonIcon size-8 hover:animate-bounce">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
             <g id="SVGRepo_iconCarrier">
