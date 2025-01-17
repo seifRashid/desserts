@@ -1,6 +1,28 @@
-<script setup></script>
+<script setup>
+//create gsap animation
+import { gsap } from 'gsap'
+import TextPlugin from 'gsap/TextPlugin';
+import { onMounted } from 'vue';
+gsap.registerPlugin(TextPlugin)
+// gsap.to('.testGsap', {x:0,stagger:{each:0.2, from: 'edges'}, duration:3, ease:'bounce.in'})
+
+ onMounted(()=>{
+  let tl = gsap.timeline();
+  tl.from('.main', {opacity:0})
+  //replaces yourElement's text with "This is the new text" 
+  .from('.craving',
+  {
+    duration: 5,
+    text: "",
+  },1)
+  .from(".orderText", {xPercent:200,opacity:0, duration:3, ease:'bounce.out'},'<')
+  .from('.searchSection', {opacity:0, duration:2},'<')
+  .from(".exploreButton", {opacity:0, y:100, ease:'bounce.out', duration:1},"<")
+ })
+  
+</script>
 <template>
-    <div class="relative h-screen bg-gray-800">
+    <div class="main relative h-screen bg-gray-800">
       <!-- Background Image -->
       <img
         src="\assets\images\landingPage.jpg"
@@ -22,18 +44,18 @@
     <h1 class="typewriter text-3xl md:text-6xl font-bold drop-shadow-md">
       We've Got You Covered!
     </h1> -->
-    <h1 class="text-4xl md:text-6xl font-bold drop-shadow-md">
+    <h1 class="craving text-4xl md:text-6xl font-bold drop-shadow-md">
           Craving Something Delicious? We've Got You Covered!
         </h1>
   <!-- </div> -->
 
-        <p class="mt-4 text-lg md:text-2xl mx-2 sm:mx-auto">
+        <p class="orderText mt-4 text-lg md:text-2xl mx-2 sm:mx-auto">
           Order your favorite meals from the best restaurants near you and get them delivered fresh
           and fast!
         </p>
         <!-- Search section -->
         <div
-          class="flex gap-2 bg-orange-500/50 border border-orange-500 py-2 px-3 rounded-full w-[400px] mt-4 ring-4 ring-orange-600 hover:ring-orange-700"
+          class="searchSection flex gap-2 bg-orange-500/50 border border-orange-500 py-2 px-3 rounded-full w-[400px] mt-4 ring-4 ring-orange-600 hover:ring-orange-700"
         >
           <button>
             <!-- fontawesome search icon -->
@@ -47,7 +69,7 @@
         </div>
         <!-- Call to action button -->
         <div
-          class="py-2 px-4 text-white text-md font-semibold rounded-full bg-orange-500 hover:bg-orange-600 mt-8"
+          class="exploreButton py-2 px-4 text-white text-md font-semibold rounded-full bg-orange-500 hover:bg-orange-600 mt-8"
         >
           <RouterLink to="/desserts" class="flex gap-2 items-center" title="Click to explore menu" >Explore Menu <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="#000000" class="size-8 hover:animate-bounce">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
