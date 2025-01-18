@@ -11,32 +11,55 @@ import VGsapText from '@/components/VGsapText.vue';
 //create gsap animation
 import { gsap } from 'gsap'
 import TextPlugin from 'gsap/TextPlugin';
+// import ScrollTrigger from 'gsap/ScrollTrigger';
+import { onMounted } from 'vue';
 // import { onMounted } from 'vue'
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(TextPlugin)
 
 function refreshAnimation(){
   gsap.to('.testGsap', {x:0,stagger:{each:0.2, from: 'edges'}, duration:3, ease:'bounce.in'})
   // gsap.to('.testGsap3', { x: 1200, duration: 3, scale: 2, repeat: -1, yoyo: true })
 }
+
 function animateBox(){
-  gsap.registerPlugin(TextPlugin)
   // gsap.to('.testGsap3', { x: 1200, duration: 3, scale: 2, repeat: -1, yoyo: true })
   gsap.timeline()
-  .to('.testGsap', {x:400,stagger:{each:0.2, from: 'edges'}, duration:3, ease:'bounce.in'})
+  .to('.bounce', {x:window.innerWidth-80,duration:3,scaleX:2,ease:'bounce.out'})
+  .to('.bounce', {scaleX:1, duration:1,transformOrigin:"100% 50%",ease:"elastic"},'-=0.8')
+
+  gsap.timeline()
+  .to('.testGsap', {x:window.innerWidth-200,stagger:{each:0.2, from: 'edges'}, duration:3, ease:'bounce.in'})
   //replaces yourElement's text with "This is the new text" 
   .to('.myElement',
   {
-    duration: 2,
+    duration: 3,
     text: "I love Gsap animation😁🚀",
     ease: "none",
     yoyo:true
-  },'<-1');
+  },'<-1')
 }
+onMounted(()=>{
+  // let tl = gsap.timeline();
+  // tl.to('.trigger', {
+  //   scrollTrigger:".trigger",
+  //   x:400, duration:2
+  // })
+  gsap.to('.trigger', {
+    scrollTrigger:".trigger",
+    x:400, duration:2
+  })
+})
 
 
 </script>
 
 <template>
-  <main class="w-full overflow-hidden">
+  <main class="w-full overflow-y-hidden overflow-x-hidden">
     <!-- Landing page -->
     <HeroSection />
     <!-- Why choose us section -->
@@ -362,6 +385,12 @@ function animateBox(){
        <p>Hello there</p>
      </div> -->
     <!-- <h1 class="testGsap3 text-xl font-bold my-4 mx-0">How are you doing brother</h1> -->
+     <div class="trigger size-12 bg-orange-700 text-white flex items-center justify-center font-bold px-2 rounded-md shadow-sm m-1">
+      Hello
+     </div>
+     <div class="bounce size-16 bg-green-700 text-white flex items-center justify-center font-bold px-2 rounded-md shadow-sm m-1">
+      Bounce
+     </div>
     <h1 class="myElement text-xl font-bold my-4">Lets animate this😁</h1>
     <h1 class="testGsap text-xl font-bold my-4">Lets animate this😁</h1>
     <h1 class="testGsap text-xl font-bold my-4">Lets animate this😁</h1>

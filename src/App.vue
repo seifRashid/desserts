@@ -3,9 +3,9 @@ import { RouterLink, RouterView } from 'vue-router'
 import ButtonComponent from './components/ButtonComponent.vue'
 </script>
 
-<template>
+<template class="overflow-hidden">
   <header>
-    <nav class="w-full px-4 py-2 flex items-center justify-between">
+    <nav class="w-full px-4 py-2 flex items-center justify-between overflow-hidden">
       <!-- <img alt="Vue logo" class="mx-5" src="@/assets/logo.svg" width="60" height="60" /> -->
       <div class="flex gap-2 items-center">
         <svg
