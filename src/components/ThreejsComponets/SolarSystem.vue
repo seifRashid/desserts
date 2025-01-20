@@ -28,17 +28,17 @@ onMounted(() => {
   const textureLoader = new THREE.TextureLoader()
 
   //Initialize a cude texture loader
-  const cubeTextureLoader = new THREE.CubeTextureLoader()
-  cubeTextureLoader.setPath('/desserts/public/assets/textures/Cube Maps/')
-  const cubeTexture = cubeTextureLoader.load([
-    'px.jpg',
-    'nx.jpg',
-    'py.jpg',
-    'ny.jpg',
-    'pz.jpg',
-    'nz.jpg',
-    ])
-    scene.background = cubeTexture
+  // const cubeTextureLoader = new THREE.CubeTextureLoader()
+  // cubeTextureLoader.setPath('/desserts/public/assets/textures/Cube Maps/')
+  // const cubeTexture = cubeTextureLoader.load([
+  //   'px.jpg',
+  //   'nx.jpg',
+  //   'py.jpg',
+  //   'ny.jpg',
+  //   'pz.jpg',
+  //   'nz.jpg',
+  //   ])
+  //   scene.background = cubeTexture
 
   // Load the texture
   const grassAlbedo = textureLoader.load(
