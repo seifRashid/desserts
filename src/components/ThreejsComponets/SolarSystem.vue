@@ -19,10 +19,10 @@ onMounted(() => {
 
   //Initialize renderer
   const renderer = new THREE.WebGLRenderer({ canvas: canvas.value, antialias: true })
+  renderer.setSize(window.innerWidth, window.innerHeight)
 
   // instantiate controls with the canvas ref
   const controls = new OrbitControls(camera, canvas.value)
-  renderer.setSize(window.innerWidth, window.innerHeight)
 
   // Initialize the texture loader
   const textureLoader = new THREE.TextureLoader()
@@ -80,19 +80,25 @@ onMounted(() => {
 
   // Add meshes/shapes to the scene
 
-  const axeHelper = new THREE.AxesHelper(2)
-  sun.add(axeHelper)
+  const axesHelper = new THREE.AxesHelper(2)
+  sun.add(axesHelper)
 
   window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight)
     camera.updateProjectionMatrix()
     camera.aspect = window.innerWidth / window.innerHeight
-    console.log(window.devicePixelRatio)
+    // console.log(window.devicePixelRatio)
   })
 
+  const clock = new THREE.Clock()
+
+  //create a renderloop function then call it after
   function animate() {
+    const elapseTime = clock.getElapsedTime()
     //create animations for the moon to orbit around the earth whereas the earth orbit around the sun
     earth.rotation.y += 0.01
+    earth.position.x = Math.sin(elapseTime)*10
+    earth.position.y = Math.cos(elapseTime)*10
     controls.update()
     renderer.render(scene, camera)
     requestAnimationFrame(animate)
