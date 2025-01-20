@@ -35,40 +35,116 @@ onMounted(() => {
   grassAlbedo.repeat.set(1, 1)
   grassAlbedo.wrapS = THREE.RepeatWrapping
   grassAlbedo.wrapT = THREE.RepeatWrapping
+  //initialize planet textures
+  const sunTexture = textureLoader.load('/desserts/public/assets/textures/2k_sun.jpg')
+  const earthTexture = textureLoader.load('/desserts/public/assets/textures/2k_earth_daymap.jpg')
+  const marsTexture = textureLoader.load('/desserts/public/assets/textures/2k_mars.jpg')
+  const mercuryTexture = textureLoader.load('/desserts/public/assets/textures/2k_mercury.jpg')
+  const venusTexture = textureLoader.load('/desserts/public/assets/textures/2k_venus_surface.jpg')
+  const jupiterTexture = textureLoader.load('/desserts/public/assets/textures/2k_jupiter.jpg')
 
+  
+  
   //create the solar system
   //create the geomentry
   const geometry = new THREE.SphereGeometry(1, 32, 32)
 
-  const sunMaterial = new THREE.MeshBasicMaterial({
-    color: 'yellow'
+  const sunMaterial = new THREE.MeshStandardMaterial({
+    map: sunTexture
   })
-  const earthMaterial = new THREE.MeshBasicMaterial({
-    color: 'blue'
+  const earthMaterial = new THREE.MeshStandardMaterial({
+    map: earthTexture
   })
-  const moonMaterial = new THREE.MeshBasicMaterial({
-    color: 'white'
+  const marsMaterial = new THREE.MeshStandardMaterial({
+    map: marsTexture
+  })
+  const mercuryMaterial = new THREE.MeshStandardMaterial({
+    map: mercuryTexture
+  })
+  const venusMaterial = new THREE.MeshStandardMaterial({
+    map: venusTexture
+  })
+  const jupiterMaterial = new THREE.MeshStandardMaterial({
+    map: jupiterTexture
   })
 
   //create the sun
   const sun = new THREE.Mesh(geometry, sunMaterial)
   sun.scale.setScalar(5)
   scene.add(sun)
+  
 
+  //Array to hold planets
+  const planets = [
+    {
+      name: 'Mercury',
+      radius: 0.3,
+      distance: 10,
+      speed: 0.005,
+      material: mercuryMaterial,
+      moons: []
+    },
+    {
+      name: 'Venus',
+      radius: 0.5,
+      distance: 15,
+      speed: 0.005,
+      material: venusMaterial,
+      moons: []
+    },
+    {
+      name: 'Earth',
+      radius: 1,
+      distance: 20,
+      speed: 0.005,
+      material: earthMaterial,
+      moons: [
+        {
+          name: 'Moon',
+          radius: 0.3,
+          distance: 3,
+          speed: 0.015
+        }
+      ]
+    },
+    {
+      name: 'Mars',
+      radius: 0.8,
+      distance: 25,
+      speed: 0.005,
+      material: marsMaterial,
+      moons: []
+    },
+    {
+      name: 'Jupiter',
+      radius: 2,
+      distance: 30,
+      speed: 0.005,
+      material: jupiterMaterial,
+      moons: [
+        {
+          name: 'Io',
+          radius: 0.5,
+          distance: 3,
+          speed: 0.015
+        },
+        {
+          name: 'Europa',
+          radius: 0.5,
+          distance: 3,
+          speed: 0.015
+        }
+      ]
+    }
+  ]
 
-  //create the earth
-  const earth = new THREE.Mesh(geometry, earthMaterial)
-  earth.position.x = 10
-  earth.scale.setScalar(1)
-  scene.add(earth)
-
-
-  //create the moon mesh
-  const moon = new THREE.Mesh(geometry, moonMaterial)
-  moon.position.x = 2
-  moon.scale.setScalar(0.5)
-  earth.add(moon)
-
+  //map through the planets and create meshes
+  const planetsMeshes = planets.map((planet) => {
+    const planetMesh = new THREE.Mesh(geometry, planet.material)
+    planetMesh.scale.setScalar(planet.radius)
+    planetMesh.position.x = planet.distance
+    scene.add(planetMesh)
+  })
 
   //initialize light
   const light = new THREE.AmbientLight(0xffffff, 0.5)
@@ -90,15 +166,8 @@ onMounted(() => {
     // console.log(window.devicePixelRatio)
   })
 
-  const clock = new THREE.Clock()
-
   //create a renderloop function then call it after
   function animate() {
-    const elapseTime = clock.getElapsedTime()
-    //create animations for the moon to orbit around the earth whereas the earth orbit around the sun
-    earth.rotation.y += 0.01
-    earth.position.x = Math.sin(elapseTime)*10
-    earth.position.y = Math.cos(elapseTime)*10
     controls.update()
     renderer.render(scene, camera)
     requestAnimationFrame(animate)
