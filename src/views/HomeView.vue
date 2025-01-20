@@ -51,7 +51,7 @@ onMounted(()=>{
   // })
   gsap.to('.trigger', {
     scrollTrigger:".trigger",
-    x:400, duration:2
+    x:window.innerWidth/2, duration:2
   })
 })
 
@@ -59,7 +59,7 @@ onMounted(()=>{
 </script>
 
 <template>
-  <main class="w-full overflow-y-hidden overflow-x-hidden">
+  <main class="relative w-full overflow-x-hidden">
     <!-- Landing page -->
     <HeroSection />
     <!-- Why choose us section -->
@@ -399,6 +399,10 @@ onMounted(()=>{
     <button class="font-semibold bg-green-400 hover:bg-green-300 rounded-md shadow-sm hover:shadow-md py-1 px-2 m-1" @click="refreshAnimation">Refresh Animate</button>
      <VGsapText/>
     <VGsaptest />
+    .bg-slate-900.w-full.py-12
+    <div class="bg-slate-900 w-full py-12">
+    <img class="absolute inset-0 object-cover z-[-20]" src="\assets\images\background texture.png">
+    </div>
   </main>
 </template>
 

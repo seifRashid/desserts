@@ -46,7 +46,7 @@ gsap.registerPlugin(TextPlugin)
     <h1 class="typewriter text-3xl md:text-6xl font-bold drop-shadow-md">
       We've Got You Covered!
     </h1> -->
-    <h1 class="craving text-4xl md:text-6xl font-bold drop-shadow-md">
+    <h1 class="font-sans craving text-4xl md:text-6xl font-bold drop-shadow-md">
           Craving Something Delicious? We've Got You Covered!
         </h1>
   <!-- </div> -->
