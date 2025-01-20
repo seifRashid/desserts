@@ -9,8 +9,7 @@ import SolarSystem from '@/components/ThreejsComponets/SolarSystem.vue';
 </script>
 <template>
   <div class="about">
-    <h1>About Our Online Food Store</h1>
-    <p>Welcome to our food store! Here are some cool visualizations:</p>
+    <h1>Planets around the sun</h1>
     <div class="three-elements">
       <!-- <VCube /> -->
       <!-- <VSphere /> -->

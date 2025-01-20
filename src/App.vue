@@ -72,7 +72,7 @@ import ButtonComponent from './components/ButtonComponent.vue'
       <div class="text-slate-700 font-semibold gap-8 flex">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/desserts">Desserts</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/solar-system">Planets</RouterLink>
         <RouterLink to="/gsap-landing-page" class="hidden sm:block" >Gsap Landing page</RouterLink>
       </div>
       <div class="">
